@@ -1,8 +1,7 @@
-<h2>TFS</h2> 
+<h1>TFS</h1> 
 <h3> WordPress Custom Theme Development Project </h3>
 
-Folder Structure is:
-<hr/>
+<h4>Folder Structure is:</h4>
 
 TFS/ 
 │── node_modules/ 
