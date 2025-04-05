@@ -1,8 +1,8 @@
 !function ($) {
 
-    // =-=-=-=-=-=-=-=-=-=
-    // Hamburger Menu
-    // =-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=
+// Hamburger Menu
+// =-=-=-=-=-=-=-=-=-=
     let header = document.getElementById('header');
     let myButton = document.querySelector('.s-hamburger-menu-btn');
     let hamburgerMenu = document.querySelector('.s-hamburger-menu');
@@ -22,9 +22,9 @@
 		}
 	);
 
-    // =-=-=-=-=-=-=-=-=-=
-    // Sicky Header 
-    // =-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=
+// Sicky Header 
+// =-=-=-=-=-=-=-=-=-=
     jQuery(window).scroll(function(){
         if ($(window).scrollTop() >= 5) {
             $(myButton).addClass('fixed');
@@ -35,10 +35,9 @@
         }
     });
     
-    // =-=-=-=-=-=-=-=-=-=
-    // Slick Testimonial
-    // =-=-=-=-=-=-=-=-=-=
-    
+// =-=-=-=-=-=-=-=-=-=
+// Slick Testimonial
+// =-=-=-=-=-=-=-=-=-=
     jQuery('.js-testimonials').slick({
         fade: true,
         autoplay: false,
@@ -52,17 +51,16 @@
         slidesToShow: 1,
         slidesToScroll: 1,
         adaptiveHeight: false,
-        infinite: true,
+        infinite: false,
         pauseOnDotsHover: false,
         pauseOnFocus: false,
         pauseOnHover: false,
         touchMove: true
     });
 
-    // =-=-=-=-=-=-=-=-=-=
-    // Scroller
-    // =-=-=-=-=-=-=-=-=-=
-
+// =-=-=-=-=-=-=-=-=-=
+// Scroller
+// =-=-=-=-=-=-=-=-=-=
     jQuery('.js-scroll-btn').click(function(e) {
         e.preventDefault();
     
@@ -78,7 +76,6 @@
         }
     });
     
-    
     jQuery('.js-scroll-top-btn').click(function() {
         $('html, body').animate({
             scrollTop: 0
@@ -87,14 +84,31 @@
     });
     
 
-    // =-=-=-=-=-=-=-=-=-=
-    // Counter
-    // =-=-=-=-=-=-=-=-=-=
-
+    document.addEventListener("DOMContentLoaded", function () {
+        // Check if URL has a hash (e.g., #meet-the-team)
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                setTimeout(() => {
+                    const headerHeight = document.querySelector("header").offsetHeight; // Fixed header height
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight - 122;
+    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth"
+                    });
+                }, 500); // Delay to ensure page loads properly
+            }
+        }
+    });
+    
+// =-=-=-=-=-=-=-=-=-=
+// Counter
+// =-=-=-=-=-=-=-=-=-=
     $(window).scroll(startCounter);
-
     function startCounter() {
-        const oTop = $("#stat-counter").offset().top - window.innerHeight;
+        const element = document.querySelector("#stat-counter");
+        const oTop = $(element).offset().top - window.innerHeight;
 
         if ($(window).scrollTop() > oTop) {
             $(window).off("scroll", startCounter);
@@ -114,9 +128,9 @@
         }
     }
 
-    // =-=-=-=-=-=-=-=-=-=
-    // Load Animation
-    // =-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=
+// Load Animation
+// =-=-=-=-=-=-=-=-=-=
     var wow = new WOW({
             boxClass:     'wow',      // animated element css class (default is wow)
             animateClass: 'animated', // animation css class (default is animated)
