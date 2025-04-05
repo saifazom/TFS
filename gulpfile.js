@@ -1,40 +1,3 @@
-
-// const gulp = require('gulp');
-// const sass = require('gulp-sass')(require('sass'));
-// const browserSync = require('browser-sync').create();
-
-// // Paths
-// const paths = {
-//     scss: 'src/scss/**/*.scss',
-//     css: 'dist/css',
-//     html: '*.html'
-// };
-
-// // Compile Sass
-// gulp.task('compileSass', function () {
-//     return gulp.src(paths.scss)
-//         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-//         .pipe(gulp.dest(paths.css))
-//         .pipe(browserSync.stream()); // BrowserSync CSS inject
-// });
-
-// // BrowserSync & Watch Task
-// gulp.task('watchFiles', function () {
-//     browserSync.init({
-//         server: {
-//             baseDir: "./" // index.html যেখানে আছে সেই লোকেশন
-//         }
-//     });
-
-//     gulp.watch(paths.scss, gulp.series('compileSass'));
-//     gulp.watch(paths.html).on('change', browserSync.reload); // HTML পরিবর্তন হলে রিলোড
-// });
-
-// // Default Task
-// gulp.task('default', gulp.series('compileSass', 'watchFiles'));
-
-/*=======*/ 
-
 const { src, dest, watch, series, parallel } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const cleanCSS = require('gulp-clean-css');
@@ -44,7 +7,7 @@ const browserSync = require('browser-sync').create();
 
 // Paths
 const paths = {
-    html: "index.html",  // আপনার index.html ফাইলের পাথ
+    html: ["index.html", "about.html", "jobs.html", "industries.html", "service.html", "contact.html"],  // আপনার index.html ফাইলের পাথ
     scss: "src/assets/scss/**/*.scss",  // SCSS ফাইলের পাথ
     js: "src/assets/js/**/*.js",  // JS ফাইলের পাথ
     img: "src/assets/img/**/*",  // ইমেজ ফাইলের পাথ
